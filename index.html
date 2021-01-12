@@ -1,1 +1,38 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/favicon.ico><title>vue-js</title><link href=/js/about.ec4b67dd.js rel=prefetch><link href=/css/app.ab586865.css rel=preload as=style><link href=/js/app.ce99ba06.js rel=preload as=script><link href=/js/chunk-vendors.85fc45a3.js rel=preload as=script><link href=/css/app.ab586865.css rel=stylesheet></head><body><noscript><strong>We're sorry but vue-js doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.85fc45a3.js></script><script src=/js/app.ce99ba06.js></script></body></html>
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+  <meta charset=utf-8>
+  <meta http-equiv=X-UA-Compatible content="IE=edge">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel=icon href=/favicon.ico>
+  <title>仓位</title>
+  <link href=/js/main.js rel=prefetch>
+  <style>
+    td, th {
+      padding:5px
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <div id="myapp"></div>
+  <script>
+  var token = localStorage.getItem('token');
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp'),
+    flags: token
+  });
+	app.ports.setStorage.subscribe(function(state) {
+    if (state === null) {
+      localStorage.removeItem('token')
+    } else {
+      localStorage.setItem('token', state)
+    }
+	})
+  </script>
+</body>
+
+</html>
